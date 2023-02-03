@@ -1,16 +1,44 @@
-<p>
-    <mat-form-field appearance="fill">
-      <mat-label>Fill form field</mat-label>
-      <input matInput placeholder="Placeholder">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>Hint</mat-hint>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="outline">
-      <mat-label>Outline form field</mat-label>
-      <input matInput placeholder="Placeholder">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>Hint</mat-hint>
-    </mat-form-field>
-  </p>
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  Preencha seus dados <p></p>
+  <div class="d-flex flex-row bd-highlight mb-3">
+    <div class = "d-flex align-items-start bg-light mb-3" style="height: 100px;">
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput id="email"  formControlName="email">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input matInput id="password"  formControlName="password">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="d-flex flex-row bd-highlight mb-3">
+      <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput id="name"  formControlName="name">
+      </mat-form-field>  
+    </div>
+    <div class="d-flex flex-row bd-highlight mb-3">
+      <mat-form-field appearance="fill">
+        <mat-label>CPF</mat-label>
+        <input matInput id="cpf"  formControlName="cpf">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Celular</mat-label>
+        <input matInput id="phone"  formControlName="phone">
+      </mat-form-field> 
+    </div>
+    <div class = "d-flex align-items-end bg-light mb-3" style="height: 100px;">
+      <mat-form-field appearance="fill">
+        <mat-label>Endereço</mat-label>
+        <input matInput id="address"  formControlName="address">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>CEP</mat-label>
+        <input matInput id="cep"  formControlName="cep">
+      </mat-form-field>
+    </div>
+    <div class="d-flex flex-row bd-highlight mb-3">
+      <button mat-raised-button>Registrar</button>
+    </div>
+</form>
