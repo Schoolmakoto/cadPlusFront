@@ -31,12 +31,13 @@
       <!-- /Password -->
 
       <div>
-        <button (click)="submitForm()" type="submit" mat-raised-button color="primary">Login</button>
-      </div>
-      <div class="button-register">
-        <button (click)="NavigateToRegister()" type="register" mat-raised-button color="primary">Registrar
-        </button>
-      </div>
+        <div>
+          <button (click)="submitForm()" type="submit" mat-raised-button color="primary">Login</button>
+        </div>
+        <div class= "register">
+          <button name ="register" (click)="NavigateToRegister()" type="register" mat-raised-button color="accent">Registrar</button>
+        </div>
+       </div>     
     </mat-card>
   </div>
 </form>
