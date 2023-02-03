@@ -1,4 +1,4 @@
-export interface AddressModel {
+export interface CustomerAddressViewModel {
   Name: string;
   Password: string;
   CPF:string;

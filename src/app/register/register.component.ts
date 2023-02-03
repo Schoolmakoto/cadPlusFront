@@ -1,6 +1,8 @@
 import {AutofillMonitor} from '@angular/cdk/text-field';
 import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { RegisterService } from './register.service';
+import { Router } from '@angular/router';
 
 /** @title Monitoring autofill state with AutofillMonitor */
 @Component({
@@ -10,27 +12,26 @@ import { FormBuilder } from '@angular/forms';
 })
 export class RegisterComponent {
 
- // items = this.cartService.getItems();
-
   checkoutForm = this.formBuilder.group({
-    email:'',
-    password:'',
-    name: '',
-    cpf:'',
-    phone:'',
-    address: '',
-    cep:''
-  });
-
+    email:['',[Validators.required]],
+    password:['',[Validators.required]],
+    name: ['',[Validators.required]],
+    cpf:['',[Validators.required]],
+    phone:['',[Validators.required]],
+    address: ['',[Validators.required]],
+    cep:['',[Validators.required]]
+  }); 
   constructor(
-    //private cartService: CartService,
-    private formBuilder: FormBuilder,
+    private RegisterService: RegisterService,
+    private formBuilder: FormBuilder,private router: Router
   ) {}
-
   onSubmit(): void {
-    // Process checkout data here
-    //this.items = this.cartService.clearCart();
-    console.log('Your order has been submitted', this.checkoutForm.value);
-    this.checkoutForm.reset();
+    if (this.checkoutForm.invalid) 
+    {return;}
+    this.RegisterService
+      .registerUser(this.checkoutForm)
+        .subscribe((response) => {
+          this.router.navigate(['/login']);
+        });;
   }
 }
