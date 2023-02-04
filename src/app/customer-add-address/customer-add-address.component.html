@@ -1,0 +1,16 @@
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    Preencha seus dados <p></p>
+      <div class = "d-flex align-items-end bg-light mb-3" style="height: 100px;">
+        <mat-form-field appearance="fill">
+          <mat-label>Endereço</mat-label>
+          <input matInput id="address"  formControlName="AddressName">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>CEP</mat-label>
+          <input matInput id="cep"  formControlName="CEP">
+        </mat-form-field>
+      </div>
+      <div class="d-flex flex-row bd-highlight mb-3">
+        <button mat-raised-button color="accent">Registrar</button>
+      </div>
+  </form>
