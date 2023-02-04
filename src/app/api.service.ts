@@ -5,6 +5,8 @@ import { environment } from 'src/environments/environment';
 import { AddressModel } from './models/AddressModel';
 import { CustomerModel } from './models/CustomerModel';
 import { CustomerAddressViewModel } from './models/CustomerAddressViewModel';
+import {catchError} from 'rxjs/operators'; 
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root',
@@ -18,10 +20,14 @@ export class ApiService {
 
 
   registerUser(post:any): Observable<CustomerAddressViewModel> {
-    return this.http.post<CustomerAddressViewModel>(`${environment.API_PATH}/registerUser`, {
-      headers: {},
-    });
-   }
+    console.log(post);
+    return this.http.post<CustomerAddressViewModel>(`${environment.API_PATH}/registerUser`,post, {
+      headers: {'Content-Type': 'application/json'},
+    })
+    .pipe(catchError((err) => {
+      console.error(err.error);
+      throw err;
+    }))}
 
   getUsers(): Observable<CustomerModel[]> {
     return this.http.get<CustomerModel[]>(`${environment.API_PATH}/getallusers`, {

@@ -12,9 +12,12 @@ items! : CustomerAddressViewModel;
 constructor(private apiService: ApiService) {}
 
 registerUser(checkoutForm:any){
-  return this.apiService.registerUser(checkoutForm).pipe(
+  let formObj = checkoutForm.getRawValue();
+  let serializedForm = JSON.stringify(formObj);
+
+  return this.apiService.registerUser(serializedForm).pipe(
     tap((response:any) => {
-      console.log('Your order has been submitted', this.registerUser);
+      console.log('resposta',response);
     })
   )
 }

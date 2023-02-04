@@ -1,5 +1,7 @@
+import { NgModule } from '@angular/core';
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
