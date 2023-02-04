@@ -1,5 +1,4 @@
-import {AutofillMonitor} from '@angular/cdk/text-field';
-import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
+import { Component} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { RegisterService } from './register.service';
 import { Router } from '@angular/router';

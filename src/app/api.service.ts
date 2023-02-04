@@ -18,7 +18,6 @@ export class ApiService {
     return this.http.post(`${environment.API_PATH}/login`, { username, password });
   }
 
-
   registerUser(post:any): Observable<CustomerAddressViewModel> {
     console.log(post);
     return this.http.post<CustomerAddressViewModel>(`${environment.API_PATH}/registerUser`,post, {
@@ -35,7 +34,7 @@ export class ApiService {
     });
    }
 
-   getAddresses(userID:number): Observable<AddressModel[]> {
+   getAddresses(userID:any): Observable<AddressModel[]> {
     return this.http.get<AddressModel[]>(`${environment.API_PATH}/getAddressesByUser/${userID}`, {
       headers: {},
     });
@@ -45,5 +44,25 @@ export class ApiService {
       headers: {},
     });
    }
+
+   addNewAddress(userId:any,post:any): Observable<CustomerAddressViewModel> {
+    console.log(post);
+    return this.http.post<CustomerAddressViewModel>(`${environment.API_PATH}/user/${userId}/addAddress/`,post, {
+      headers: {'Content-Type': 'application/json'},
+    })
+    .pipe(catchError((err) => {
+      console.error(err.error);
+      throw err;
+    }))}
+
+   updateAddress(userId:any,addressId:any,post:any): Observable<CustomerAddressViewModel> {
+    console.log(post);
+    return this.http.put<CustomerAddressViewModel>(`${environment.API_PATH}/updateUser/user/${userId}/address/${addressId}`,post, {
+      headers: {'Content-Type': 'application/json'},
+    })
+    .pipe(catchError((err) => {
+      console.error(err.error);
+      throw err;
+    }))}
 
 }

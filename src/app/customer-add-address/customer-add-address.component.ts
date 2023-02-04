@@ -27,7 +27,7 @@ export class CustomerAddAddressComponent implements OnInit {
     this.CustomerAddAddressService
       .addNewAddress(this.checkoutForm)
         .subscribe((response) => {
-          this.router.navigate(['/login']);
+          this.router.navigate(['/customers']);
         });;
   }
   

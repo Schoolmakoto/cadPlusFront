@@ -19,9 +19,7 @@ export class AuthService {
     return this.apiService.login(username, password).pipe(
       tap((response: any) => {
         this._isLoggedIn$.next(true);
-        localStorage.setItem('auth_file', response.token);
-        const token = localStorage.getItem('auth_file');
-        console.log(token)
+        localStorage.setItem('auth_file', response);
       })
     );
   }
