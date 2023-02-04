@@ -17,14 +17,16 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   submitForm() {
-    if (this.form.invalid) {
-      return;
-    }
-
+    if (this.form.invalid) 
+    {return;}
     this.authService
       .login(this.form.get('username')?.value, this.form.get('password')?.value)
       .subscribe((response) => {
         this.router.navigate(['/customers']);
       });
   }
+
+  NavigateToRegister() {
+    this.router.navigate(['/register']);
+    }
 }
